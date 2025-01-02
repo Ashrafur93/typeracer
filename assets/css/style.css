@@ -74,3 +74,9 @@ header {
 .button-group button {
     margin-right: 10px;
 }
+
+.modal {
+    list-style-type: decimal;
+    margin-left: 20px;
+    color: black;
+}

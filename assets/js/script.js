@@ -19,12 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const difficultySelect = document.getElementById('difficulty-select');
     const sampleTextElement = document.getElementById('sample-text');
-    const startButton = document.getElementById('start-button');
-    const stopButton = document.getElementById('stop-button');
     const retryButton = document.getElementById('retry-button');
     const resultTimeElement = document.getElementById('result-time');
     const typingBox = document.getElementById('typing-box');
     let startTime, endTime;
+    let testStarted = false;
 
     function getRandomText(difficulty) {
         const texts = sampleTexts[difficulty];
@@ -38,14 +37,17 @@ document.addEventListener('DOMContentLoaded', function () {
         sampleTextElement.textContent = randomText;
     }
 
-    function handleStartButtonClick() {
-        startTime = new Date();
-        startButton.disabled = true;
-        stopButton.disabled = false;
-        resultTimeElement.textContent = '';
-        typingBox.value = '';
-        typingBox.disabled = false;
-        typingBox.focus();
+    function handleTypingStart(event) {
+        if (!testStarted) {
+            startTime = new Date();
+            testStarted = true;
+            resultTimeElement.textContent = '';
+            retryButton.disabled = true;
+        }
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleTypingStop();
+        }
     }
 
     function calculateWPM(sampleText, userInput, timeTaken) {
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return Math.round(wpm);
     }
 
-    function handleStopButtonClick() {
+    function handleTypingStop() {
         endTime = new Date();
         const timeTaken = (endTime - startTime) / 1000; // time in seconds
         const userInput = typingBox.value;
@@ -74,18 +76,19 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('result-wpm').textContent = wpm + ' WPM';
         document.getElementById('result-level').textContent = difficultySelect.value.charAt(0).toUpperCase() + difficultySelect.value.slice(1);
 
-        startButton.disabled = false;
-        stopButton.disabled = true;
         typingBox.disabled = true;
+        testStarted = false;
+        retryButton.disabled = false;
     }
 
     function handleRetryButtonClick() {
         handleDifficultyChange();
-        startButton.disabled = false;
-        stopButton.disabled = true;
         resultTimeElement.textContent = '';
         typingBox.value = '';
-        typingBox.disabled = true;
+        typingBox.disabled = false;
+        typingBox.focus();
+        testStarted = false;
+        retryButton.disabled = true;
     }
 
     function updateTypingFeedback() {
@@ -108,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     difficultySelect.addEventListener('change', handleDifficultyChange);
-    startButton.addEventListener('click', handleStartButtonClick);
-    stopButton.addEventListener('click', handleStopButtonClick);
     retryButton.addEventListener('click', handleRetryButtonClick);
+    typingBox.addEventListener('input', handleTypingStart);
     typingBox.addEventListener('input', updateTypingFeedback);
+    typingBox.addEventListener('keydown', handleTypingStart);
 
     // Initialize with a random text from the default difficulty level
     handleDifficultyChange();
-    stopButton.disabled = true;
-    typingBox.disabled = true;
+    typingBox.disabled = false;
+    retryButton.disabled = true;
 });

@@ -56,7 +56,8 @@ header {
     padding: 20px;
 }
 
-.left-column, .right-column {
+.left-column,
+.right-column {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;

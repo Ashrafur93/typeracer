@@ -27,7 +27,6 @@ header {
     color: #fff;
 }
 
-
 /* results-area */
 
 #results-area {
@@ -39,4 +38,38 @@ header {
 #results-area p {
     font-size: 1.1rem;
     margin-bottom: 5px;
+}
+
+/* additional styles from index.html */
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.left-column, .right-column {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.sample-text {
+    margin-bottom: 20px;
+}
+
+.typing-area {
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    margin-right: 10px;
 }

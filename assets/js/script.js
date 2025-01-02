@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const stopButton = document.getElementById('stop-button');
     const retryButton = document.getElementById('retry-button');
     const resultTimeElement = document.getElementById('result-time');
+    const typingBox = document.getElementById('typing-box');
     let startTime, endTime;
 
     function getRandomText(difficulty) {
@@ -42,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
         startButton.disabled = true;
         stopButton.disabled = false;
         resultTimeElement.textContent = '';
+        typingBox.value = '';
+        typingBox.disabled = false;
+        typingBox.focus();
     }
 
     function calculateWPM(sampleText, userInput, timeTaken) {
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleStopButtonClick() {
         endTime = new Date();
         const timeTaken = (endTime - startTime) / 1000; // time in seconds
-        const userInput = document.getElementById('typing-box').value;
+        const userInput = typingBox.value;
         const sampleText = sampleTextElement.textContent;
         const wpm = calculateWPM(sampleText, userInput, timeTaken);
 
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         startButton.disabled = false;
         stopButton.disabled = true;
+        typingBox.disabled = true;
     }
 
     function handleRetryButtonClick() {
@@ -79,14 +84,37 @@ document.addEventListener('DOMContentLoaded', function () {
         startButton.disabled = false;
         stopButton.disabled = true;
         resultTimeElement.textContent = '';
+        typingBox.value = '';
+        typingBox.disabled = true;
+    }
+
+    function updateTypingFeedback() {
+        const sampleWords = sampleTextElement.textContent.split(' ');
+        const userWords = typingBox.value.split(' ');
+
+        let feedbackHTML = '';
+
+        for (let i = 0; i < sampleWords.length; i++) {
+            if (userWords[i] === undefined) {
+                feedbackHTML += `<span>${sampleWords[i]}</span> `;
+            } else if (userWords[i] === sampleWords[i]) {
+                feedbackHTML += `<span style="color: blue;">${sampleWords[i]}</span> `;
+            } else {
+                feedbackHTML += `<span style="color: red;">${sampleWords[i]}</span> `;
+            }
+        }
+
+        sampleTextElement.innerHTML = feedbackHTML.trim();
     }
 
     difficultySelect.addEventListener('change', handleDifficultyChange);
     startButton.addEventListener('click', handleStartButtonClick);
     stopButton.addEventListener('click', handleStopButtonClick);
     retryButton.addEventListener('click', handleRetryButtonClick);
+    typingBox.addEventListener('input', updateTypingFeedback);
 
     // Initialize with a random text from the default difficulty level
     handleDifficultyChange();
     stopButton.disabled = true;
+    typingBox.disabled = true;
 });

@@ -17,50 +17,41 @@
                 Instructions
             </button>
         </div>
-<!-- Instructions Modal -->
-<div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Welcome to TypeRacer! Follow these instructions to take the typing test:</p>
-                <ol>
-                    <li>Select the difficulty level from the dropdown menu on the right.</li>
-                    <li>Read the sample text displayed in the left column.</li>
-                    <li>Start typing the sample text in the typing area below it.</li>
-                    <li>Your time and words per minute (WPM) will be calculated as you type.</li>
-                    <li>Once you finish typing, your results will be displayed below the typing area.</li>
-                    <li>If you want to try again, click the "Retry" button.</li>
-                </ol>
-                <p>Good luck and have fun!</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- Instructions Modal -->
+        <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to TypeRacer! Follow these instructions to take the typing test:</p>
+                        <ol>
+                            <li>Select the difficulty level from the dropdown menu on the right.</li>
+                            <li>Read the sample text displayed in the left column.</li>
+                            <li>Start typing the sample text in the typing area below it.</li>
+                            <li>Your time and words per minute (WPM) will be calculated as you type.</li>
+                            <li>Once you finish typing, your results will be displayed below the typing area.</li>
+                            <li>If you want to try again, click the "Retry" button.</li>
+                        </ol>
+                        <p>Good luck and have fun!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-        <script>
-            document.getElementById('instructions-button').addEventListener('click', function () {
-                var instructionsModal = new bootstrap.Modal(document.getElementById('instructionsModal'));
-                instructionsModal.show();
-            });
-        </script>
     </header>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#instructionsModal">
-        Instructions
-    </button>
 
     <main>
         <div class="grid-container">
             <div class="left-column">
                 <!-- Content for the left column -->
                 <div class="sample-text">
-                    <p id="sample-text">The quick brown fox jumps over the lazy dog.</p>
+                    <p id="sample-text">Hello world!</p>
                 </div>
                 <div class="typing-area">
                     <textarea id="typing-box" rows="4" class="form-control"
@@ -93,6 +84,12 @@
     <!-- Add your own kit code to enable Font Awesome -->
     <script src="https://kit.fontawesome.com/YOUR-KIT-CODE-HERE.js" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
+    <script>
+        document.getElementById('instructions-button').addEventListener('click', function () {
+            var instructionsModal = new bootstrap.Modal(document.getElementById('instructionsModal'));
+            instructionsModal.show();
+        });
+    </script>
 </body>
 
 </html>

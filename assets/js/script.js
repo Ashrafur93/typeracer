@@ -1,19 +1,50 @@
 document.addEventListener('DOMContentLoaded', function () {
     const sampleTexts = {
         easy: [
-            "The quick brown fox jumps over the lazy dog.",
+            "Practice makes perfect.",
             "Hello world!",
-            "Typing is fun."
+            "Typing is fun.",
+            "The cat sat on the mat.",
+            "I love my new hat.",
+            "Dogs bark at strangers.",
+            "The sun is bright today.",
+            "She has a red ball.",
+            "We eat lunch at noon.",
+            "The book is on the table.",
+            "He drives a big car.",
+            "She sings a lovely song.",
+            "They run in the park."
         ],
+
         medium: [
             "JavaScript is a versatile programming language.",
-            "Practice makes perfect.",
-            "Coding challenges improve problem-solving skills."
+            "The quick brown fox jumps over the lazy dog.",
+            "Coding challenges improve problem-solving skills.",
+            "She enjoys reading books on rainy afternoons.",
+            "The bakery on Main Street sells delicious pastries.",
+            "He borrowed a novel from the local library.",
+            "They are planning a vacation to the mountains next summer.",
+            "My sister 's new kitten is playful and curious.",
+            "The chef prepared a gourmet meal for the guests.",
+            "He built a model airplane from scratch.",
+            "The children played outside until the sun set.",
+            "She painted a beautiful landscape of the countryside.",
+            "The quick brown fox jumps over the lazy dog multiple times."
         ],
+
         hard: [
             "Asynchronous programming can be tricky to understand.",
-            "The quick brown fox jumps over the lazy dog multiple times.",
-            "Complex algorithms require careful planning and execution."
+            "Complex algorithms require careful planning and execution.",
+            "She meticulously arranged the multicolored marbles in a symmetrical pattern.",
+            "The ancient manuscript contained cryptic symbols that puzzled the archaeologists.",
+            "Completing the intricate jigsaw puzzle required not only patience but also keen observation skills.",
+            "His eloquent speech captivated the audience, leaving a lasting impression on everyone present.",
+            "Despite the complexity of the mathematical equation, she solved it with remarkable ease.",
+            "The breathtaking scenery along the coastal highway left travelers in awe.",
+            "He navigated the bustling city streets with a confident stride, unfazed by the chaos around him.",
+            "The ambitious project required the collaboration of multiple departments and extensive planning.",
+            "Immersed in the enchanting world of the novel, she lost track of time entirely.",
+            "The sophisticated software application streamlined the workflow, enhancing productivity."
         ]
     };
 
